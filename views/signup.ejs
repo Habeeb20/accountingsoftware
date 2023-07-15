@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dignity</title>
+</head>
+<style>
+    @media screen and (max-width: 600px) {
+        body {
+            margin:200px;
+            padding: 200px;
+        }
+
+        .inbox {
+            margin: 50px, 50px, 50px, 50px
+        }
+        
+    }
+
+  
+        body {
+        padding: 0%;
+        margin: 0%;
+        background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(wallpaper12.jpg);
+        background-size:cover;
+        background-position: center;
+       
+    }
+
+    @keyframes labels {
+        from{
+            opacity: 0;
+        }
+        
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes inbox {
+        from{
+            opacity: 0;
+        }
+        
+        to {
+            opacity: 1;
+        }
+    }
+
+   
+
+   
+
+    .inbox {
+        animation: inbox 9s;
+        animation-duration: 10s;
+        position: relative;
+        border: 2px solid white;
+        background-color:transparent;
+        height: 350px;
+        width: 250px;
+        padding: 3% 3% 20px 0px;
+        margin: 50px 400px;
+        margin-top: 40px;
+        margin-bottom: 3px;
+        padding-bottom: 3%;
+        
+    }
+
+    .inbox ::before {
+        content: "";
+        position: absolute;
+        transform: scaleX(0.5);
+        transform-origin: left;
+    }
+
+    .inbox:hover {
+        color: blueviolet;
+        border:2px solid cyan;
+        
+        
+    }
+    .labels {
+        animation: labels 3s;
+        position: relative;
+        margin: 50px;
+        margin-left: 3px;
+        padding: 20px;
+        color:white;
+        margin-top: 15px;
+        transition: 1s;
+        transform-origin: right;
+        transform: scaleX(1);
+      
+    }
+
+    label {
+        margin-left:2px ;
+
+    }
+    input {
+        border-radius: 4px;
+        width: 230px;
+        background: none;
+        outline:none;
+        height: 20px;
+        color: white;
+        text-decoration:none;
+
+    }
+    
+    .input {
+        margin-top: 45px;
+        
+    }
+    h3 {
+        color: black;
+        text-align: center;
+    }
+
+    button {
+        width: 60px;
+        margin: 40px 70px;
+        text-decoration: none;
+        transition: 0.5s;
+    }
+
+    button:hover {
+        width: 80px;
+       
+    }
+
+
+    .popup {
+        position: absolute;
+        background-color: white;
+        margin: 50px, 50px, 50px, 50px;
+        align-items: center;
+        text-align: center;
+        transform: translate(-50%, -50%) scale(0.1);
+        visibility: hidden;
+        transition: transform 0.4s, top 0.4s;
+        top: 0%;
+        left: 50%;
+
+
+    }
+
+    .open-popup {
+        visibility: visible;
+        top: 50%;
+        transform: translate(-50%, 50%) scale(1);
+    }
+
+    @media only screen and (max-width: 700px){
+
+        body {
+        padding: 0%;
+        margin: 0%;
+        background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(favorite.png);
+        background-size:cover;
+        background-position: center;
+       
+    }
+
+        .inbox {
+            margin: 50px;
+            position: absolute;
+        }
+
+    
+        
+    }
+  
+    
+
+    
+
+    
+
+</style>
+<body>
+    <form action="/signup"   method="post">
+        
+        <div class="inbox">
+            <h3>Create an account!!!</h3>
+            <div class="labels">
+                <label for="Email">Email</label>
+                <input type="text" name="email" placeholder="email" required>
+    
+                <div class="input">
+                    <label for="Password">Password</label>
+                    <input type="password" name="password" placeholder="password" required >
+                </div>
+                
+                    <a href="/profile"><button>submit</button></a>
+                
+
+         
+    
+               
+            </div>
+    
+    
+        </div>
+       
+    </form>
+
+</body>
+<script>
+
+
+
+var h1 = document.querySelector("h3");
+var input = document.querySelector(".labels");
+var inbox = document.querySelector(".inbox");
+var i = document.querySelector("input");
+isblue = false;
+iscyan = false;
+
+setInterval(function(){
+    if(isblue) {
+        h1.style.color = "white";
+    } else {
+        h1.style.color = "chartreuse";
+    }
+    isblue = !isblue;
+    iscyan = !iscyan;
+}, 1000);
+
+setInterval(function(){
+    if(iscyan) {
+        input.style.color = "white";
+    } else {
+        input.style.color = "green";
+    }
+    iscyan = !iscyan;
+}, 500);
+
+setInterval(function(){
+    if(iscyan) {
+        i.style.color="white";
+    } else {
+        i.style.color="green";
+    }
+    iscyan = !iscyan;
+
+}, 250);
+
+
+
+
+</script>
+</html>
