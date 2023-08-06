@@ -45,11 +45,13 @@ const loginverified = (async(req, res) => {
 
 
             if (verifypassword) {
+                console.log(verifyemail)
+                console.log(verifypassword)
                 
                 req.session.user_id = verifyemail.id
-                req.session.is_admin = verifyemail.is_admin;
 
-                if (verifyemail.is_admin) {
+
+                if (verifyemail.id) {
                     res.render('profile', {
                         email:req.body.email,
                         name:req.body.name,
@@ -64,12 +66,7 @@ const loginverified = (async(req, res) => {
                         
                     })
                     
-                } else {
-                    
-                }
-
-
-
+                } 
                 
             } else {
                 res.redirect('/login')
@@ -78,30 +75,8 @@ const loginverified = (async(req, res) => {
 
 
         } else {
-            // console.log("your email is not found in the database, please register")
-            // res.render('signup', {message: "your details is incorrect"})
-            if (!verifyemail) {
-                const email = req.body.email;
-                const password = await securepassword(req.body.password)
-
-                const newdetails = new Client({
-                    email:email,
-                    password:password,
-                });
-
-                const savenewdetail = await newdetails.save();
-                
-                    if(savenewdetail){
-                        console.log("your details has been succefully saved")
-                        res.render('profile', {email:email})
-                    } else {
-                        console.log("error")
-                    }
-              
-            } else {
-                console.log('unknown error')
-                
-            }
+            res.render('signup')
+         
           
         }
 
@@ -125,30 +100,61 @@ const getsignup = (async(req, res) => {
 
 });
 
-const loadsignup = (async(req, res) => {
+const signupverified = (async(req, res) => {
     try {
         const email = req.body.email
         const password = await securepassword(req.body.password);
 
-        const clientdata =await  Client({
+        const clientdata = new Client({
             email: email,
             password:password
 
         });
-        const Client = await clientdata.save()
-        if(clientdata) {
-            console.log("successfully added")
+        const lient = await clientdata.save()
+        if(lient) {
+            console.log(lient)
             res.render('profile', {email:email})
         } else {
             console.log('error')
-            res.redirect('/login')
+            res.redirect('/signup')
         }
         
     } catch (error) {
         console.log(error)
         
     }
-})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const getprofile = (async(req, res) => {
     try{
@@ -260,5 +266,5 @@ module.exports = {
     getedit,
     loadedit,
     getlogout,
-    loadsignup
+    signupverified
 }
